@@ -53,13 +53,14 @@ ChatBot::ChatBot(const ChatBot &source)
   _image=new wxBitmap(*source._image);
 }
 
-ChatBot::ChatBot &operator=(const ChatBot &source)
+
+ChatBot& ChatBot::operator=(const ChatBot &source)
 {
      if (this == &source) 
     {
         return *this;
     }
-    _currentNode=source._currentNode;
+  _currentNode=source._currentNode;
   _rootNode=source._rootNode;
   _chatLogic=source._chatLogic;
   _image=new wxBitmap(*source._image);
@@ -70,7 +71,7 @@ ChatBot::ChatBot &operator=(const ChatBot &source)
 ChatBot::ChatBot(ChatBot &&source)
 {
     // can we use std::move here?
-      _chatLogic = source._chatLogic;
+    _chatLogic = source._chatLogic;
     _rootNode = source._rootNode;
     _image = source._image;
     source._chatLogic = nullptr;
@@ -78,11 +79,12 @@ ChatBot::ChatBot(ChatBot &&source)
     source._image = nullptr;
 }
  
-ChatBot::ChatBot &operator=(ChatBot &&source)
+ChatBot& ChatBot:: operator=(ChatBot &&source)
 {
-if (this == &source) 
-{
+    if (this == &source) 
+    {
         return *this;
+    }
         delete _image;
     _chatLogic = source._chatLogic;
     _rootNode = source._rootNode;
@@ -93,7 +95,7 @@ if (this == &source)
     source._image = nullptr;
 
     return *this;
-}
+
 }
 ////
 //// EOF STUDENT CODE
