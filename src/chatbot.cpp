@@ -51,6 +51,8 @@ ChatBot::ChatBot(const ChatBot &source)
   _rootNode=source._rootNode;
   _chatLogic=source._chatLogic;
   _image=new wxBitmap(*source._image);
+ _chatLogic->SetChatbotHandle(this);
+
 }
 
 
@@ -89,7 +91,6 @@ ChatBot& ChatBot:: operator=(ChatBot &&source)
     _chatLogic = source._chatLogic;
     _rootNode = source._rootNode;
     _image = source._image;
-    // can I delete teh pointer instead of making of nulptr
     source._chatLogic = nullptr;
     source._rootNode = nullptr;
     source._image = nullptr;
